@@ -1,0 +1,28 @@
+.navbar{
+    height:50px;
+    background-color: #DFF1F2;
+    justify-content: center;
+    display: flex;
+}
+.navContainer{
+    width:100%;
+    max-width:1024px;
+    display: flex;
+    color:#58ADB0;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-family: 'Roboto';
+}
+.register{
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+    color:rgb(0, 0, 0);
+    background-color: white;
+    padding: 5px 10px;
+    margin-right: 8px;
+}
