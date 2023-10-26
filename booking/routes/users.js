@@ -6,7 +6,7 @@ const {verifyToken, verifyUser, verifyAdmin}=require('../utils/verifyToken')
 // router.get("/checkauthentication",verifyToken,(req,res,next)=>{
 //     console.log("hello user you've logged in");
 // })
-// router.get("/checkuser",verifyUser,(req,res,next)=>{
+// router.get("/checkuser/:id",verifyUser,(req,res,next)=>{
 //     console.log("hello user you've logged in and can delete your account");
 // })
 // router.get("/checkadmin",verifyAdmin,(req,res,next)=>{

@@ -12,9 +12,6 @@ const register = async (req, res, next) => {
       email:req.body.email,
       password:hash
   })
-
-   
-
   //   const newUser = new User({
   //     ...req.body,
   //     password: hash,
@@ -25,7 +22,7 @@ const register = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+}; 
 
 const login = async (req, res, next) => {
   try {

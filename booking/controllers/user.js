@@ -1,7 +1,16 @@
+const bcrypt = require("bcryptjs/dist/bcrypt");
 const User = require("../models/Users");
 
 const updateUser = async (req, res, next) => {
     try {
+      if (req.body.password) {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+  
+        // Update the user with the hashed password
+        req.body.password = hash;
+      }
+  
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         { $set: req.body },
