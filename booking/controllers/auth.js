@@ -52,4 +52,10 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
-module.exports={register,login};
+const logout = (req, res) => {
+  // Clear the "access_token" cookie
+  res.clearCookie("access_token");
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
+module.exports = { register, login, logout };
