@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
 
   return (
     <div className="navbar">
@@ -18,12 +24,54 @@ const Navbar = () => {
         >
           <span className="logo">Travello</span>
         </Link>
+        <div className="navLinks">
+          <Link
+            to="/hotels"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            Hotels
+          </Link>
+          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+            Trains
+          </Link>
+          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+            Flights
+          </Link>
+          <Link
+            to="/about"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            About
+          </Link>
+        </div>
+
         {user ? (
-          user.username
+          <div className="navItems">
+            <span className="username">{user.username}</span>
+            <button className="logout" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         ) : (
           <div className="navItems">
-            <button className="register">Register</button>
-            <button className="register">Login</button>
+            <Link
+              to="/register"
+              className="register"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              Register
+            </Link>
+            <Link
+              to="/register"
+              className="register"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              Login
+            </Link>
           </div>
         )}
       </div>

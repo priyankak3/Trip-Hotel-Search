@@ -10,19 +10,30 @@ import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
-
+  console.log(location.pathname);
+  const [destination, setDestination] = useState(
+    location.state?.destination || ""
+  );
+  const [dates, setDates] = useState(location.state?.dates || []);
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options);
+  const [options, setOptions] = useState(location.state?.options || {});
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const showAllHotels = location.pathname === "/hotels";
 
-  const { data, loading, error, reFetch } = useFetch(
-    `http://localhost:8080/hotels?city=${destination}&min=${min || 0}&max=${
-      max || 99999
-    }`
-  );
+  // Update the data fetching URL based on the condition
+  const apiUrl = showAllHotels
+    ? "http://localhost:8080/hotels"
+    : `http://localhost:8080/hotels?city=${destination}&min=${min || 0}&max=${
+        max || 99999
+      }`;
+
+  const { data, loading, error, reFetch } = useFetch(apiUrl);
+  // const { data, loading, error, reFetch } = useFetch(
+  //   `http://localhost:8080/hotels?city=${destination}&min=${min || 0}&max=${
+  //     max || 99999
+  //   }`
+  // );
   const handleClick = () => {
     reFetch();
   };

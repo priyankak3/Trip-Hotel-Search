@@ -5,6 +5,7 @@ import List from "./pages/list/List";
 import Hotel from "./pages/hotel/Hotel";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import About from "./components/about/About";
 function App() {
   return(
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Route path='/hotels/find/:id' element={<Hotel/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/about" element={<About/>}/>
       </Routes>
     </BrowserRouter>
   )

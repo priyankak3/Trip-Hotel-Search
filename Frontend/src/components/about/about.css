@@ -1,0 +1,124 @@
+.about {
+  background-image: url("/Users/sushantkadam/Desktop/JS_Projects/Hotel/Trip-Hotel-Search-1/Frontend/src/photos/main.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  object-fit: cover;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.about > .navItems {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+}
+.navItems > .logo {
+  flex: 1;
+  font-weight: 300;
+  font-size: 1.7rem;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.login-1,
+.register-1 {
+  margin-top: 20px;
+  margin-right: 10px;
+  background-color: #67ceee;
+  padding: 6px;
+  border-radius: 5px;
+  text-decoration: none; /* Remove text decoration for links */
+  color: black;
+}
+
+.register-1 {
+  background-color: white;
+  margin-left: 20px;
+}
+.login-1 {
+  margin-right: 50px;
+}
+
+.overflow {
+  font-family: "Inter", Helvetica;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Welcome {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.subheading {
+  font-size: 1.7rem;
+}
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+.horizontal-bar {
+  background-color: #a3a3a3;
+  height: 10px;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.heading1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: #999393;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+.Travel-in-hand {
+  padding: 12px;
+  font-size: 1.5rem;
+}
+.dest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+.destinationList {
+  /* flex: 1; */
+  position: relative;
+  color: white;
+  border-radius: 10px;
+  height: 450px;
+  display: flex;
+  justify-content: space-between;
+}
+.destinationList > img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  padding: 10px;
+}
+.destinationList > .Titles {
+  background-color: white;
+  /* flex: 1; */
+  /* top: 110%;
+  height: 70px;
+  width: 100%;
+  padding: 5px; */
+  position: absolute;
+  color: black;
+  bottom: 0;
+  left: 20px;
+}

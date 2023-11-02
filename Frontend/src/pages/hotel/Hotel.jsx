@@ -64,7 +64,7 @@ const Hotel = () => {
     if (user) {
       setOpenModal(true);
     } else {
-      navigate("/register");
+      navigate("/login");
     }
   };
   return (
