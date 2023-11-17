@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
-  city: 'Mumbai',
+  city: '',
   dates: [],
   options: {
     adult: 1,

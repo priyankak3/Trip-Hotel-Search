@@ -29,6 +29,11 @@ const Header = () => {
       key: "selection",
     },
   ]);
+
+  const handleDateSelect = (item) => {
+    setDates([item.selection]);
+    setOpenDate(false); // Close the date range selection box after selection
+  };
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,

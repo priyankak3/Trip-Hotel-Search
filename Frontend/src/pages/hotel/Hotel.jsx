@@ -1,6 +1,6 @@
 import "./hotel.css";
 import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
+// import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,12 +10,42 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
+import axios from "axios";
+import { format } from "date-fns";
+
+const getHotelDetails = async (arrival_date, departure_date) => {
+  const options = {
+    method: "GET",
+    url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/getHotelDetails",
+    params: {
+      hotel_id: "191605",
+      arrival_date: arrival_date,
+      departure_date: departure_date,
+      adults: "1",
+      children_age: "1,17",
+      room_qty: "1",
+      languagecode: "en-us",
+      currency_code: "INR",
+    },
+    headers: {
+      "X-RapidAPI-Key": "d2ee623077msh2c821438ec02590p15b628jsne1fb3565a190",
+      "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const Hotel = () => {
   const location = useLocation();
@@ -23,14 +53,16 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [details, setDetails] = useState([]);
 
-  const { data, loading, error } = useFetch(
-    `http://localhost:8080/hotels/find/${id}`
-  );
+  // const { id } = useParams();
+  // console.log(id);
+  const { data, loading } = useFetch(`http://localhost:8080/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
+
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -60,6 +92,23 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
+  useEffect(() => {
+    fetchHotelDetails();
+  }, []);
+
+  const fetchHotelDetails = async () => {
+    // console.log(dates);
+    try {
+      const response = await getHotelDetails(
+        format(dates[0].startDate, "yyyy-MM-dd"),
+        format(dates[0].endDate, "yyyy-MM-dd")
+      );
+      setDetails(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  // const { data, loading } = { details };
   const handleClick = () => {
     if (user) {
       setOpenModal(true);
