@@ -7,6 +7,7 @@ const usersRoute = require('./routes/users')
 const roomsRoute = require('./routes/rooms')
 const cookieParser = require('cookie-parser')
 const cors=require("cors");
+const { searchRegions } = require('./controllers/hotel');
 const app = express();
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use("/auth",authRoute);
 app.use("/hotels",hotelsRoute);
 app.use("/users",usersRoute);
 app.use("/rooms",roomsRoute);
+// app.use('/hotels', searchRegions);
  
 //error handling middleware
 app.use((err,req,res,next)=>{

@@ -1,5 +1,8 @@
 const Hotel=require('../models/Hotels')
 const Room = require('../models/Rooms')
+const axios = require('axios');
+
+
 const createHotel = async(req,res,next)=>{
     const newHotel = new Hotel(req.body);
 
@@ -93,4 +96,32 @@ const getHotelRooms = async (req, res, next) => {
   }
 }
 
-module.exports={createHotel,updateHotel,deleteHotel,getHotel,getHotels,countByCity,countByType,getHotelRooms}
+
+const searchRegions = async (req, res, next) => {
+  const { query } = req.query;
+  const options = {
+    method: 'GET',
+    url: 'https://hotels-com-provider.p.rapidapi.com/v2/regions',
+    params: {
+      query,
+      domain: 'AE',
+      locale: 'en_GB',
+    },
+    headers: {
+      'X-RapidAPI-Key': 'd2ee623077msh2c821438ec02590p15b628jsne1fb3565a190',
+      'X-RapidAPI-Host': 'hotels-com-provider.p.rapidapi.com',
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    const regions = response.data; // Extract regions from the response
+    res.status(200).json(regions);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
+
+module.exports={createHotel,updateHotel,deleteHotel,getHotel,getHotels,countByCity,countByType,getHotelRooms,searchRegions}
