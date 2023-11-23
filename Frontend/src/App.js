@@ -6,6 +6,7 @@ import Hotel from "./pages/hotel/Hotel";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import About from "./components/about/About";
+import Travel from "./pages/travel/page/travelPage/Travel";
 function App() {
   return(
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/travel" element={<Travel/>}/>
       </Routes>
     </BrowserRouter>
   )

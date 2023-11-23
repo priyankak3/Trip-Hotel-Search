@@ -120,12 +120,11 @@
   color: grey;
 }
 .rdrDays {
-  display: grid !important; 
-  grid-template-columns: repeat(7, 1fr); 
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
 }
-.rdrDays>.rdrDay{
+.rdrDays > .rdrDay {
   width: auto;
-  
 }
 .options {
   z-index: 1;
@@ -134,7 +133,7 @@
   background-color: white;
   -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
-} 
+}
 
 .optionItem {
   width: 200px;
@@ -166,8 +165,8 @@
 .Search-btn {
   position: absolute;
   top: 90%;
-  left: 30%;
-  background-color:  #339999;
+  left: 33%;
+  background-color: #339999;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -176,8 +175,8 @@
   font-size: 1.05rem;
   cursor: pointer;
 }
-.Search-btn >.search {
-  height: 50px;
+.Search-btn > .search {
+  height: 40px;
   width: 400px;
   border: 0.5px solid #339999;
   background-color: #339999;

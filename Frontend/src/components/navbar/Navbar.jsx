@@ -34,7 +34,10 @@ const Navbar = () => {
           <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
             Trains
           </Link>
-          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+          <Link
+            to="/travel"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
             Flights
           </Link>
           <Link
