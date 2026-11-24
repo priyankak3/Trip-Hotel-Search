@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "booking": {
+      "root": "booking",
+      "framework": "express"
+    },
+    "frontend": {
+      "root": "Frontend",
+      "framework": "create-react-app"
+    }
+  },
+  "rewrites": []
+}
